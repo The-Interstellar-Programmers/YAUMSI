@@ -61,6 +61,7 @@ class MinecraftServerHomePage(QMainWindow):
             QMainWindow {  
                 background-image: url('/Users/qingchen.deng/GitHub/YAUMSI/assets/img/menubg.png');  
                 background-repeat: no-repeat;  
+                
                 background-position: center;  
             }  
         """)  
@@ -100,6 +101,7 @@ class MinecraftServerHomePage(QMainWindow):
         self.settings_btn1 = QPushButton("Settings", self)
         self.settings_btn1.setFont(subtitlefz)
         self.settings_btn1.clicked.connect(self.settings_clicked)
+        #self.settings_btn1.clicked.connect(self.settings_clicked)
         main_layout.addWidget(self.settings_btn1, alignment=Qt.AlignmentFlag.AlignCenter)
         main_layout.addSpacing(20)
 
@@ -122,6 +124,8 @@ class MinecraftServerHomePage(QMainWindow):
         btn_font.setBold(True)
         return btn_font
 
+
+
     def install_clicked(self):
         title = "Yet Another Universal Minecraft Server Installer - Installation"
         layout = QVBoxLayout()
@@ -137,6 +141,7 @@ class MinecraftServerHomePage(QMainWindow):
         confirm_button = QPushButton("Ok, Let's Move On!", self)
         confirm_button.clicked.connect(self.confirm_server_type)
         layout.addWidget(confirm_button, alignment=Qt.AlignmentFlag.AlignCenter)
+        
         
         central_widget = QWidget()
         central_widget.setLayout(layout)
@@ -160,6 +165,9 @@ class MinecraftServerHomePage(QMainWindow):
         server_page.show()
         self.opened_windows.append(server_page)
 
+
+
+    
     def setup_spigot_page(self, page):
         try:
             spigot_versions_link = 'https://getbukkit.org/download/spigot'
@@ -189,13 +197,15 @@ class MinecraftServerHomePage(QMainWindow):
         layout.addWidget(self.combo_box, alignment=Qt.AlignmentFlag.AlignCenter)
         
         # Confirmation Button
-        confirm_button = QPushButton("Ok, Let's Move On!", self)
-        confirm_button.clicked.connect(self.confirm_server_type)
+        confirm_button = QPushButton("Ok", self)
+        confirm_button.clicked.connect(self.confirm_spigot_server_version)
         layout.addWidget(confirm_button, alignment=Qt.AlignmentFlag.AlignCenter)
         
         central_widget = QWidget()
         central_widget.setLayout(layout)
         page.setCentralWidget(central_widget)
+        
+
 
     def setup_papermc_page(self, page):
         layout = QVBoxLayout()
